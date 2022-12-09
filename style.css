@@ -1,0 +1,299 @@
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    background: #fffcf2;
+    font-family: Courier;
+}
+
+/* RULES */
+
+.rules{
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.901);
+    width: 100%;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #fffcf2; 
+    font-size: 0.9rem;
+    overflow: scroll;
+}
+
+.rule-section{
+    width: 80%;
+}
+
+.explanation{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.preamble{
+    padding: 0 20px;
+}
+
+.text{
+    width: 80%;
+}
+
+.plan{
+    width: 100px;
+    height: 100px;
+}
+
+@media (max-width : 600px){
+    .explanation{
+        flex-direction: column-reverse;
+    }
+    .plan{
+        margin: 20px 0;
+    }
+}
+
+.rules h2{
+    margin-top: -10px;
+}
+
+.rules-open{
+    display: flex;
+}
+
+.flex-row{
+    display: flex;
+}
+
+.flex-column-center{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.flex-row-center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.space-between{
+    justify-content: space-between;
+}
+
+.square-rules-small{
+    width: 20px;
+    height: 20px;
+}
+
+.square-rules-medium{
+    width: 30px;
+    height: 30px;
+}
+
+.square-rules-big{
+    width: 60px;
+    height: 60px;
+    background: transparent !important;
+    border: none !important;
+}
+
+.pawn-outline{
+    outline: 4px solid #f3c053;
+}
+
+.rulesButton{
+    position: absolute;
+    z-index: 3;
+    top: 10px;
+    right: 10px;
+    width: 50px;
+    height: 50px;
+    border: 3px solid #403d39;
+    border-radius: 10%;
+    cursor: pointer;
+}
+
+.rulesButton div{
+    height: 3px;
+    width: 35px;
+    border-radius: 20%;
+    background: #403d39;
+    margin: 11px auto;
+    transition: all 0.5s;
+}
+
+.rulesButton-open {
+    border: 3px solid #fffcf2;
+}
+
+.rulesButton-open div {
+    background: #fffcf2;
+}
+
+.rulesButton-open div:first-child {
+    transform: rotate(45deg) translateY(10px) translateX(10px);
+}
+
+.rulesButton-open div:nth-child(2) {
+    visibility: hidden;
+}
+
+.rulesButton-open div:last-child {
+    transform: rotate(-45deg) translateY(-10px) translateX(10px);
+}
+
+/* GAME */
+
+#boardGame{
+    width: 600px;
+    height: 600px;
+    border: 2px solid #403d39;
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+}
+
+button{
+    margin-top: 10px;
+    padding: 10px;
+    color: #403d39;
+    border: 2px solid #403d39;
+    font-weight: bold;
+    background: transparent;
+    cursor: pointer; 
+}
+
+#gameTurnDisplay{
+    color: #403d39;
+}
+
+#winDisplay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 5;
+    background: rgba(0, 0, 0, 0.804);
+    width: 100%;
+    height: 100vh;
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+#winMessage{
+    text-align: center;
+    font-size: 2rem;
+}
+
+#restart{
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    color: #fffcf2;
+    border-color: #fffcf2;
+}
+
+#endOfTurn{
+    margin-right: 50px;
+}
+
+.buttonActive{
+    border-color: #fffcf2;
+    color: #fffcf2;
+    background: #403d39;
+}
+
+#button{
+    display: flex;
+}
+
+@media (max-width : 600px){
+    #boardGame{
+        width: 500px;
+        height: 500px;
+    }
+    #winMessage{
+        font-size: 1rem;
+    }
+    #button{
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+    #endOfTurn{
+        margin-right: 0;
+    }
+}
+@media (max-width : 500px){
+    #boardGame{
+        width: 400px;
+        height: 400px;
+    }
+}
+@media (max-width : 400px){
+    #boardGame{
+        width: 300px;
+        height: 300px;
+    }
+}
+
+
+.square{
+    border: 1px solid #403d39;
+    /* background: #ccc5b9; */
+    background: #eae4da;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.move-square{
+    background: #f3c053 !important;
+}
+
+.kill-square{
+    background: #f36b53 !important;
+}
+
+.push-square{
+    background: #53bef3 !important;
+}
+
+.pull-square{
+    background: #21759f !important;
+}
+
+.pawn{
+    width: 90%;
+    height: 90%;
+    position: relative;
+    overflow: hidden;
+    border-radius: 10%;
+}
+
+.pawn::before{
+    content: "";
+    width: 200%;
+    height: 200%;
+    position: absolute;
+    transform: rotate(45deg) translateX(15%) translateY(15%);
+    top: 0;
+    bottom: 0;
+    background: #403d39;
+}
+
+.pawnTeam1{
+    background: #6a8532;
+}
+
+.pawnTeam2{
+    background: #eb5e28;
+}
